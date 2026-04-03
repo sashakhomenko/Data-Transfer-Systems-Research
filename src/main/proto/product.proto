@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_package = "pl.edu.vistula.firstrestapispring.grpc";
+option java_outer_classname = "ProductProto";
+
+service ProductService {
+  rpc GetProduct (ProductRequest) returns (ProductResponse);
+  rpc GetAllProducts (EmptyRequest) returns (ProductListResponse);
+  rpc CreateProduct (CreateProductRequest) returns (ProductResponse);
+}
+
+message ProductRequest {
+  int64 id = 1;
+}
+
+message CreateProductRequest {
+  string name = 1;
+}
+
+message ProductResponse {
+  int64 id = 1;
+  string name = 2;
+}
+
+message ProductListResponse {
+  repeated ProductResponse products = 1;
+}
+
+message EmptyRequest {}
