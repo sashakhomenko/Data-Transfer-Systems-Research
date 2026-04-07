@@ -33,7 +33,7 @@ public class GrpcBenchmark {
         int failureCount = 0;
 
         // Warm-up: sending 50 requests before measuring for JVM to optimize code
-        System.out.println("[gRPC] Warming up...");
+//        System.out.println("[gRPC] Warming up...");
 //        for (int i = 0; i < 50; i++) {
 //            try {
 //                stub.getProduct(
@@ -105,7 +105,7 @@ public class GrpcBenchmark {
         double reliability = (double) successCount / totalRequests * 100.0;
 
         return new BenchmarkResult(
-                "gRPC", totalRequests, totalTimeMs, avg, min, max, p99, throughput, reliability, totalTimeMs
+                "gRPC", totalRequests, avg, min, max, p99, throughput, reliability, totalTimeMs
         );
     }
 }

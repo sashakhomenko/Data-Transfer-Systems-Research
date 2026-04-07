@@ -5,7 +5,6 @@ public class BenchmarkResult {
 
     private final String systemName; // "gRPC", "REST", "RabbitMQ", etc.
     private final long totalRequests;  // the number of requests
-    private final long totalLatencyMs;     // sum of all times
     private final double avgLatencyMs;   // average time per request in milliseconds
     private final long minLatencyMs;     // fastest single request
     private final long maxLatencyMs;     // slowest single request
@@ -14,12 +13,11 @@ public class BenchmarkResult {
     private final double reliabilityPct; // percentage of requests that succeeded (0-100)
     private final long totalTimeMs;      // how long the whole test took
 
-    public BenchmarkResult(String systemName, long totalRequests, long totalLatencyMs, double avgLatencyMs, long minLatencyMs,
+    public BenchmarkResult(String systemName, long totalRequests, double avgLatencyMs, long minLatencyMs,
                            long maxLatencyMs, long p99LatencyMs, double throughputRps,
                            double reliabilityPct, long totalTimeMs) {
         this.systemName = systemName;
         this.totalRequests = totalRequests;
-        this.totalLatencyMs = totalLatencyMs;
         this.avgLatencyMs = avgLatencyMs;
         this.minLatencyMs = minLatencyMs;
         this.maxLatencyMs = maxLatencyMs;
@@ -31,7 +29,6 @@ public class BenchmarkResult {
 
     public String getSystemName()      { return systemName; }
     public long getTotalRequests()   { return totalRequests; }
-    public long getTotalLatencyMs()   { return totalLatencyMs; }
     public double getAvgLatencyMs()    { return avgLatencyMs; }
     public long   getMinLatencyMs()    { return minLatencyMs; }
     public long   getMaxLatencyMs()    { return maxLatencyMs; }
@@ -53,7 +50,7 @@ public class BenchmarkResult {
                         "Throughput  : %.2f req/sec\n" +
                         "Reliability : %.2f%%\n" +
                         "Total Time  : %d ms",
-                systemName, totalRequests, totalLatencyMs, avgLatencyMs, minLatencyMs, maxLatencyMs,
+                systemName, totalRequests, avgLatencyMs, minLatencyMs, maxLatencyMs,
                 p99LatencyMs, throughputRps, reliabilityPct, totalTimeMs
         );
     }
