@@ -1,5 +1,4 @@
 package pl.edu.vistula.firstrestapispring.pulsar;
-
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.apache.pulsar.client.api.*;
